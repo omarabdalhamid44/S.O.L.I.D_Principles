@@ -10,24 +10,32 @@
 /// Warehouse Communication
 
 class OrderManager {
+
+  /// <------ Done to create Order Model
   String customerName = '';
   String customerEmail = '';
   List<Map<String, dynamic>> items = [];
   double totalAmount = 0.0;
+/// ---------->
+
 
   bool createOrder(Map<String, dynamic> orderData) {
 
+/// <------------------------ Done to create class validation order data
     if (orderData['customerName'] == null ||
         orderData['customerName'].isEmpty) {
       print('Error: Customer name is required');
       return false;
     }
+///---------------------->
 
-
+/// <----------------------- Done to create class validation format
     if (!orderData['customerEmail'].contains('@')) {
       print('Error: Invalid email format');
       return false;
     }
+/// ----------------------------->
+
 
 
     double total = 0.0;
