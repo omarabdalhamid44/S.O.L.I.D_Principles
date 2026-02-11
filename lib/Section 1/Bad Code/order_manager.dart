@@ -77,15 +77,19 @@ class OrderManager {
 
     /// ------------->
 
+    /// <---------- Done by create Func saving Order to data base
     saveOrderToDatabase(orderData);
 
+/// --------------->
 
+/// <--------------- Done by create notification  service
     sendEmail(
       orderData['customerEmail'],
       'Order Confirmation',
       'Your order #${DateTime.now().millisecondsSinceEpoch} has been confirmed',
     );
-
+/// ----------->
+    ///
     /// Analytics Tracking
     updateAnalytics('order_completed', total);
 

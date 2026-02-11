@@ -3,6 +3,7 @@ import '../models/order_model.dart';
 import '../validation/valdiation_format.dart';
 import '../validation/validation_order.dart';
 import 'database_service_order.dart';
+import 'notifaction_service.dart';
 import 'payment_service.dart';
 
 class OrderService {
@@ -11,13 +12,15 @@ class OrderService {
   final ValidationFormat validationFormat;
   final DatabaseServiceOrders databaseService;
   final PaymentService paymentService;
+  final NotificationService notificationService;
 
   OrderService({
     required this.order,
     required this.validationOrder,
     required this.validationFormat,
     required this.databaseService,
-    required this.paymentService
+    required this.paymentService,
+    required this.notificationService,
   });
 
   bool createOrder() {
@@ -25,18 +28,22 @@ class OrderService {
         validationOrder.validCustomerData(order) &&
         validationFormat.isValidEmail(order);
     calculateTotal();
+
+    if (paymentService.processPayment())
+    databaseService.updateInventoryInDatabase(order);
+      notificationService.send(
+        order.customerEmail,
+        'Order Confirmation',
+        'Your order #${DateTime.now().millisecondsSinceEpoch} has been confirmed',
+      );
+
     return isValid;
   }
 
   double calculateTotal() {
     double total = 0.0;
     for (var item in order.items) {
-      if (isProductInStock(item)) {
-        total += item['price'] * item['quantity'];
-        databaseService.updateInventoryInDatabase(item['id'],item['stock'] - item['quantity']);
-      }
-      paymentService.processPayment();
-
+      if (isProductInStock(item)) total += item['price'] * item['quantity'];
     }
     return total;
   }
@@ -48,6 +55,4 @@ class OrderService {
     }
     return true;
   }
-
-
 }
