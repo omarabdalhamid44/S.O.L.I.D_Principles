@@ -1,19 +1,23 @@
+import '../models/credit_card_model.dart';
 import '../models/order_model.dart';
 import '../validation/valdiation_format.dart';
 import '../validation/validation_order.dart';
 import 'database_service_order.dart';
+import 'payment_service.dart';
 
 class OrderService {
   final Order order;
   final ValidationOrder validationOrder;
   final ValidationFormat validationFormat;
   final DatabaseServiceOrders databaseService;
+  final PaymentService paymentService;
 
   OrderService({
     required this.order,
     required this.validationOrder,
     required this.validationFormat,
-    required this.databaseService
+    required this.databaseService,
+    required this.paymentService
   });
 
   bool createOrder() {
@@ -31,6 +35,8 @@ class OrderService {
         total += item['price'] * item['quantity'];
         databaseService.updateInventoryInDatabase(item['id'],item['stock'] - item['quantity']);
       }
+      paymentService.processPayment();
+
     }
     return total;
   }

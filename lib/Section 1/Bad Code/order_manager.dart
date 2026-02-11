@@ -54,6 +54,8 @@ class OrderManager {
       updateInventoryInDatabase(item['id'], item['stock'] - item['quantity']);
     }
 /// ----------->
+
+    /// <------------ Done by create payment class
     if (orderData['paymentMethod'] == 'credit_card') {
       bool paymentSuccess = chargeCreditCard(
         orderData['cardNumber'],
@@ -72,6 +74,8 @@ class OrderManager {
         return false;
       }
     }
+
+    /// ------------->
 
     saveOrderToDatabase(orderData);
 
