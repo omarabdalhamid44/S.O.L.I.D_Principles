@@ -93,7 +93,7 @@ class OrderManager {
 
     return true;
   }
-
+/// <----- Done by create model for credit card and payment service class
   bool chargeCreditCard(
     String cardNumber,
     String expiry,
@@ -102,20 +102,23 @@ class OrderManager {
   ) {
     return true;
   }
-
+///--------->>>
+  ///
+  /// <----- Done by create model for paypal and payment service class
   bool chargePaypal(String email, double amount) {
     return true;
   }
 
+  /// <-------- Done By create class DataBase order service
   /// Call Database
   void updateInventoryInDatabase(String itemId, int newStock) {
     /// Impl
   }
-
   void saveOrderToDatabase(Map<String, dynamic> orderData) {
     /// Impl
 
   }
+  /// ----------------->
 
   void sendEmail(String to, String subject, String body) {
     /// Impl
