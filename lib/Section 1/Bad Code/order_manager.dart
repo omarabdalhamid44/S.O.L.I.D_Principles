@@ -37,7 +37,7 @@ class OrderManager {
 /// ----------------------------->
 
 
-
+/// <------------- Done that by class order service & class database for service order
     double total = 0.0;
     for (var item in orderData['items']) {
       total += item['price'] * item['quantity'];
@@ -53,7 +53,7 @@ class OrderManager {
 
       updateInventoryInDatabase(item['id'], item['stock'] - item['quantity']);
     }
-
+/// ----------->
     if (orderData['paymentMethod'] == 'credit_card') {
       bool paymentSuccess = chargeCreditCard(
         orderData['cardNumber'],

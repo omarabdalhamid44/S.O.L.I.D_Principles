@@ -1,6 +1,6 @@
 import '../models/order_model.dart';
 
-class ValdiationFormat{
+class ValidationFormat{
 
     bool isValidEmail(Order order){
          if (!order.customerEmail.contains('@')) {
