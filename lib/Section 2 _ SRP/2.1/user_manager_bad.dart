@@ -21,10 +21,12 @@ class UserManager {
     return '${password}_hashed';
   }
 
+  /// <----------- Done by create class repository for user
   void saveToDatabase() {
     print('Saving user $name to database...');
   }
-
+/// --------->
+  ///
   void sendWelcomeEmail() {
     print('Sending welcome email to $email...');
   }
