@@ -27,10 +27,12 @@ class UserManager {
   }
 /// --------->
   ///
+  /// <----------- Done by create class for email notification
   void sendWelcomeEmail() {
     print('Sending welcome email to $email...');
   }
-
+/// ---------->
+  ///
   void logUserCreation() {
     print('LOG: User $name created at ${DateTime.now()}');
   }
