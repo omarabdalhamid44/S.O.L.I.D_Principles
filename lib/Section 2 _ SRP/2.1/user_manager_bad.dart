@@ -33,10 +33,11 @@ class UserManager {
   }
 /// ---------->
   ///
+  /// <----------- Done by create class for logger user
   void logUserCreation() {
     print('LOG: User $name created at ${DateTime.now()}');
   }
-
+/// ------------->
   void createUser(String name, String email, String password) {
     this.name = name;
     this.email = email;
