@@ -17,10 +17,11 @@ class UserManager {
     return email.contains('@') && email.contains('.');
   }
 /// ----------->
+  /// <--------- Done by create class for hash password
   String hashPassword(String password) {
     return '${password}_hashed';
   }
-
+/// -------------->
   /// <----------- Done by create class repository for user
   void saveToDatabase() {
     print('Saving user $name to database...');
