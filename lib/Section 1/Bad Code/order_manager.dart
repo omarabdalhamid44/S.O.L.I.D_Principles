@@ -114,6 +114,9 @@ class OrderManager {
   }
 
   /// <-------- Done By create class DataBase order service
+  ///
+  ///
+  /// <---------- Done by create Func saving Order to data base
   /// Call Database
   void updateInventoryInDatabase(String itemId, int newStock) {
     /// Impl
@@ -124,9 +127,12 @@ class OrderManager {
   }
   /// ----------------->
 
+  /// <--------------- Done by create notification  service
+
   void sendEmail(String to, String subject, String body) {
     /// Impl
   }
+  /// ----------------->
 
   void updateAnalytics(String event, double value) {
     /// Impl

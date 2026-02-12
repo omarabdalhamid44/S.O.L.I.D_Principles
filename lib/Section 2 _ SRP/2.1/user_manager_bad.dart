@@ -1,11 +1,22 @@
+/// To Fix That
+/// 1- create class model for user  /
+/// 2- create class validator for email
+/// 3- create class hash password
+/// 4- create class user repo for database service
+/// 5- create class email Notification for sending emails
+/// 6- create class LoggerUser for user log
+/// 7- create class operation user for CRUD users
+
 class UserManager {
+  /// <------   create user model
   String name = '';
   String email = '';
-
+/// ------->
+  /// <--------- Done by create class for validator email
   bool isValidEmail(String email) {
     return email.contains('@') && email.contains('.');
   }
-
+/// ----------->
   String hashPassword(String password) {
     return '${password}_hashed';
   }
